@@ -742,6 +742,9 @@ Connection.prototype.apexRest = function(data, callback) {
     // Allow for data.uri to start with or without a /
     + ((data.uri.substring(0,1)==='/') ? data.uri.substring(1) : data.uri);
   opts.method = opts.method || 'GET';
+  if (opts.jsonBody) {
+    opts.body = JSON.stringify(opts.body);
+  }
   if(opts.urlParams) {
     opts.qs = opts.urlParams;
   }
